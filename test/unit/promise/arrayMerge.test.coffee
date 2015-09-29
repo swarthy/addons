@@ -1,4 +1,4 @@
-arrayMerge = require '../../../src/common/arrayMerge'
+arrayMerge = require '../../../src/promise/arrayMerge'
 describe 'Promise::arrayMerge', ->
   it 'should merge array of objects into one', ->
     arr = [{field1: [1,2], limit: 1},{ field1: [3,4], limit: 2}]

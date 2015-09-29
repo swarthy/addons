@@ -6,6 +6,8 @@ module.exports =
     unless arguments.length is 3
       return Promise.reject new Error 'Must be 3 arguments'
     arrs = _.chunk array, count
+    unless arrs.length
+      arrs = [[]]
     Promise.all _.map arrs, (subArray)-> func subArray
     .then (arrayOfResults)->
       arrayMerge arrayOfResults
@@ -13,6 +15,8 @@ module.exports =
     unless arguments.length is 3
       return Promise.reject new Error 'Must be 3 arguments'
     arrs = _.chunk array, count
+    unless arrs.length
+      arrs = [[]]
     Promise.reduce arrs, (result, subArray)->
       func subArray
       .then (res)->

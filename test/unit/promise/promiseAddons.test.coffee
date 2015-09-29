@@ -27,3 +27,9 @@ describe.only 'Promise::Split Promise', ->
   it 'should throw error on wrong argument count', ->
     promiseAddons.splitBy 2, []
     .should.be.rejected
+  it 'should return empty array on empty array', ->
+    promiseAddons.splitBy 2, [], (subArr)->
+      subArr.length.should.be.equal 0
+      subArr
+    .then (res)->
+      res.length.should.be.equal 0

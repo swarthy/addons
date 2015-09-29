@@ -24,3 +24,9 @@ describe.only 'Promise::Split Promise', ->
         subArr
     .then (result)->
       result.length.should.be.equal 6
+  it 'should throw error on wrong argument count', ->
+    errHandler = sinon.spy()
+    promiseAddons.splitBy 2, []
+    .catch errHandler
+    .then ->
+      errHandler.called.should.be.ok

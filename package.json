@@ -1,0 +1,33 @@
+{
+  "name": "swarthyaddons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preversion": "npm test",
+    "version": "git add .",
+    "postversion": "git push && git push --tags",
+    "test": "mocha",
+    "prepublish": "coffee -o lib -c src"
+  },
+  "author": "Alexander Mochalin <horroshow@mail.ru>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swarthy/addons.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.10.1",
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "coffee-coverage": "^0.6.3",
+    "coffee-script": "^1.10.0",
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.1",
+    "sinon-as-promised": "^4.0.0",
+    "sinon-chai": "^2.8.0"
+  }
+}

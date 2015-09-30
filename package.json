@@ -6,8 +6,9 @@
   "scripts": {
     "preversion": "npm test",
     "version": "git add .",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags && npm publish",
     "test": "mocha",
+    "coverage": "istanbul cover _mocha",
     "prepublish": "coffee -o lib -c src"
   },
   "author": "Alexander Mochalin <horroshow@mail.ru>",

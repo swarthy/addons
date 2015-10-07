@@ -24,3 +24,9 @@ module.exports =
     , []
     .then (arrayOfResults)->
       arrayMerge arrayOfResults
+  sequence: (array, func)->
+    Promise.reduce array, (total, arrayItem)->
+      func arrayItem
+      .then (res)->
+        total.concat [res]
+    , []

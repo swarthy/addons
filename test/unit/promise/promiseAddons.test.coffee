@@ -33,3 +33,11 @@ describe.only 'Promise::Split Promise', ->
       subArr
     .then (res)->
       res.length.should.be.equal 0
+  it 'should run sequence ~ 4 * 20 ms', ->
+    arr = [1,2,3,4]
+    promiseAddons.sequence arr, (item)->
+      Promise.delay(20)
+      .then ->
+        item
+    .then (result)->
+      result.length.should.be.equal 4

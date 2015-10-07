@@ -16,12 +16,18 @@ describe.only 'Promise::Split Promise', ->
     .then (result)->
       for elem,index in arr
         result.field1[index].should.be.equal elem * 2
-  it 'should run sequence ~90ms', ->
+  it 'should run split sequence ~90ms', ->
     arr = [1,2,3,4,5,6]
     promiseAddons.splitBySeq 2, arr, (subArr)->
       Promise.delay(30)
       .then ->
         subArr
+    .then (result)->
+      result.length.should.be.equal 6
+  it 'should run split sequence INSTANT', ->
+    arr = [1,2,3,4,5,6]
+    promiseAddons.splitBySeq 2, arr, (subArr)->
+      subArr
     .then (result)->
       result.length.should.be.equal 6
   it 'should throw error on wrong argument count', ->
@@ -39,5 +45,11 @@ describe.only 'Promise::Split Promise', ->
       Promise.delay(20)
       .then ->
         item
+    .then (result)->
+      result.length.should.be.equal 4
+  it 'should run sequence INSTANT', ->
+    arr = [1,2,3,4]
+    promiseAddons.sequence arr, (item)->
+      item
     .then (result)->
       result.length.should.be.equal 4

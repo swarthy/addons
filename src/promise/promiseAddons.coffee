@@ -18,7 +18,7 @@ module.exports =
     unless arrs.length
       arrs = [[]]
     Promise.reduce arrs, (result, subArray)->
-      func subArray
+      Promise.resolve func subArray
       .then (res)->
         result.concat [res]
     , []
@@ -26,7 +26,7 @@ module.exports =
       arrayMerge arrayOfResults
   sequence: (array, func)->
     Promise.reduce array, (total, arrayItem)->
-      func arrayItem
+      Promise.resolve func arrayItem
       .then (res)->
         total.concat [res]
     , []
